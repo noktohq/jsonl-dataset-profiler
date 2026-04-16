@@ -1,15 +1,43 @@
-# JSONL Dataset Profiler
+# JSONL Datasett-profiler
 
-Lite verktøy for å profilere JSONL-datasett:
+CLI-verktoy for profilering av JSONL-datasett for bruk i LLM-trening og testmiljoer.
 
-- finner felter
-- teller frekvens
-- sjekker null-rate
-- estimerer verdityper og enkle ranges
+## Funksjoner
 
-Brukes til å forstå datasett før de mates inn i LLM-er, testoppsett eller analysepipelines.
+- Analyserer alle felter i JSONL-filer
+- Teller feltfrekvenser og null-rater
+- Estimerer datatyper per felt
+- Statistikk (min/maks/gjennomsnitt for tallfelt)
+- Oppdager anomalier og tomme verdier
+
+## Installasjon
+
+```bash
+pip install -r requirements.txt
+```
+
+## Bruk
+
+```bash
+python jsonl_profiler.py datasett.jsonl
+python jsonl_profiler.py datasett.jsonl --output rapport.json
+python jsonl_profiler.py datasett.jsonl --top 20
+```
+
+## Eksempelutdata
+
+```
+Felt              Type     Antall    Null%
+id                int      10000     0.0%
+tekst             str      10000     0.2%
+etikett           str       9980     0.2%
+score             float    10000     1.1%
+```
 
 ## Ansvarsfraskrivelse
 
-Dette er et uoffisielt open source-verktøy laget på eget initiativ for å gjøre profilering av JSONL-datasett enklere i praksis.
-Verktøyet er ikke bestilt eller driftet av noen bestemt virksomhet eller leverandør, og leveres uten noen formell support eller garanti.
+Verktoy laget for analyse av egne eller lisensierte datasett. Brukeren er ansvarlig for etterlevelse av GDPR og gjeldende personvernregler.
+
+## Eier
+
+[Nokto](https://nokto.no) — edin@nokto.no
